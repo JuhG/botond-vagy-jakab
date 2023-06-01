@@ -7,7 +7,7 @@ const Admin = async () => {
   const items = await db.select().from(tasks);
 
   return (
-    <div className="p-4 flex flex-col gap-4">
+    <div className="flex flex-col gap-4 p-4">
       <Link href="/admin/upload">Upload</Link>
       <ul className="flex flex-col gap-4">
         {items.map((item) => {

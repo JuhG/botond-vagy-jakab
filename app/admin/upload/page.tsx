@@ -24,9 +24,9 @@ const Admin = () => {
         }}
       />
       <form className="flex flex-col gap-2" action={saveTask}>
-        <label className="flex gap-2 items-center">
+        <label className="flex items-center gap-2">
           <span>Image url: </span>
-          <input className="p-1 rounded bg-gray-500" required name="image" value={file} />
+          <input className="rounded bg-gray-500 p-1" required name="image" value={file} />
         </label>
         <div className="flex gap-2">
           <label className="flex gap-1">
