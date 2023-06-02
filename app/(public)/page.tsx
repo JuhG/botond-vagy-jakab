@@ -1,19 +1,33 @@
 import { db, tasks } from "@/db";
-import { sql } from "drizzle-orm";
+import { notInArray, sql } from "drizzle-orm";
 import { kv } from "@vercel/kv";
 import crypto from "node:crypto";
 import Image from "next/image";
+import { cookies } from "next/headers";
 
 const Home = async () => {
+  const { value } = cookies().get("bvj") as { value: string };
+  const list: number[] = await kv.lrange(value, 0, -1);
+
   const items = await db
     .select({
       id: tasks.id,
       image: tasks.image,
     })
     .from(tasks)
+    .where(notInArray(tasks.id, list))
     .orderBy(sql`random()`)
     .limit(1);
   const item = items[0];
+
+  if (!item) {
+    return (
+      <div className="flex h-screen flex-col items-center justify-center gap-4 bg-gray-800 p-8">
+        <h2 className="text-xl">Elfogyott!</h2>
+        <p>Jelenleg ennyi kép volt elérhető, gyere vissza később.</p>
+      </div>
+    );
+  }
 
   const id = crypto.randomBytes(10).toString("hex");
   kv.set(id, item.id, { ex: 3600 });

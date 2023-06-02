@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { kv } from "@vercel/kv";
 
 const redirectFactory = (request: NextRequest) => (newPath: string) => {
   const pathname = new URL(request.url).pathname;
@@ -17,7 +18,8 @@ const middleware = async (request: NextRequest) => {
     return redirect("/admin/login");
   }
 
-  if (request.cookies.get("bvj")?.value !== "1") {
+  const value = request.cookies.get("bvj")?.value;
+  if (!value || !(await kv.exists(value))) {
     return redirect("/guest");
   }
 

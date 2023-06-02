@@ -1,6 +1,7 @@
 import { db, tasks } from "@/db";
 import { kv } from "@vercel/kv";
-import { eq, sql } from "drizzle-orm";
+import { eq } from "drizzle-orm";
+import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import { z } from "zod";
@@ -32,6 +33,9 @@ const Result = async ({ searchParams }: { searchParams: { [key: string]: string 
     .update(tasks)
     .set(child.toLowerCase() === "botond" ? { botond: item.botond } : { jakab: item.jakab })
     .where(eq(tasks.id, item.id));
+
+  const { value } = cookies().get("bvj") as { value: string };
+  await kv.lpush(value, item.id);
 
   return (
     <div className="flex h-screen flex-col items-center justify-center gap-8 bg-gray-200 p-8">

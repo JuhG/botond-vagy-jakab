@@ -1,5 +1,7 @@
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
+import crypto from "node:crypto";
+import { kv } from "@vercel/kv";
 
 const Home = async () => {
   const onSubmit = async (data: FormData) => {
@@ -7,10 +9,15 @@ const Home = async () => {
     const password = data.get("password");
 
     if (password === process.env.DD_PASSWORD) {
-      cookies().set("bvj", "1", {
+      const id = crypto.randomBytes(10).toString("hex");
+      await kv.rpush(id, 0);
+
+      cookies().set("bvj", id, {
         httpOnly: true,
         secure: true,
+        sameSite: true,
       });
+
       redirect("/");
     }
 
