@@ -18,3 +18,10 @@ export const deleteTask = async (data: FormData) => {
 
   revalidatePath("/admin");
 };
+
+export const resetVotes = async () => {
+  await db.update(tasks).set({
+    botond: 0,
+    jakab: 0,
+  });
+};
