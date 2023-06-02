@@ -21,10 +21,19 @@ const Home = async () => {
   const item = items[0];
 
   if (!item) {
+    const fail: number = (await kv.get(`${value}-fail`)) ?? 0;
     return (
       <div className="flex h-screen flex-col items-center justify-center gap-4 bg-gray-800 p-8">
         <h2 className="text-xl">Elfogyott!</h2>
         <p>Jelenleg ennyi kép volt elérhető, gyere vissza később.</p>
+        {fail ? (
+          <p>
+            Csak <b>{fail}</b> képet rontottál el.
+          </p>
+        ) : (
+          <p>Mind jó lett, te biztos az anyja vagy :)</p>
+        )}
+        <p>Nem rossz!</p>
       </div>
     );
   }

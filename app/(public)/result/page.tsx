@@ -36,6 +36,9 @@ const Result = async ({ searchParams }: { searchParams: { [key: string]: string 
 
   const { value } = cookies().get("bvj") as { value: string };
   await kv.lpush(value, item.id);
+  if (!success) {
+    await kv.incr(`${value}-fail`);
+  }
 
   return (
     <div className="flex h-screen flex-col items-center justify-center gap-8 bg-gray-200 p-8">
