@@ -1,6 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
 import { deleteTask } from "@/app/admin/actions";
 import { db, tasks } from "@/db";
+import Image from "next/image";
 import Link from "next/link";
 
 const Admin = async () => {
@@ -18,7 +18,7 @@ const Admin = async () => {
                 <button>DEL</button>
               </form>
               <span>{item.child}</span>
-              <img src={item.image} alt="" />
+              <Image className="object-contain" width="200" height="200" src={item.image} alt="" />
             </li>
           );
         })}

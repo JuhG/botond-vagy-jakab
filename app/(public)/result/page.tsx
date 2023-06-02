@@ -1,7 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
 import { db, tasks } from "@/db";
 import { kv } from "@vercel/kv";
 import { eq, sql } from "drizzle-orm";
+import Image from "next/image";
 import Link from "next/link";
 import { z } from "zod";
 
@@ -38,19 +38,21 @@ const Result = async ({ searchParams }: { searchParams: { [key: string]: string 
       <p className="text-gray-800">Ez {item.child}</p>
       <div className="flex w-full gap-2">
         <div
-          className="rounded bg-green-500 p-1"
+          className="rounded bg-purple-400 p-1"
           style={{ width: (100 * item.botond) / (item.jakab + item.botond) + "%" }}
         >
           Botond: {item.botond}
         </div>
         <div
-          className="rounded bg-red-500 p-1"
+          className="rounded bg-teal-400 p-1"
           style={{ width: (100 * item.jakab) / (item.jakab + item.botond) + "%" }}
         >
           Jakab: {item.jakab}
         </div>
       </div>
-      <img className="flex-1 object-contain" src={item.image} alt="" />
+      <div className="min-h-0 flex-1">
+        <Image className="h-full w-full object-contain" height="800" width="800" src={item.image} alt="" />
+      </div>
       <div className="w-full space-y-4 pb-16 text-center">
         {success && <p className="rounded bg-green-200 p-1 text-green-700">Talált!</p>}
         {!success && <p className="rounded bg-red-200 p-1 text-red-700">Nope, ez mellé</p>}
