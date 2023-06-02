@@ -1,5 +1,7 @@
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
+import { kv } from "@vercel/kv";
+import crypto from "node:crypto";
 
 const AdminLogin = async () => {
   const onSubmit = async (data: FormData) => {
@@ -7,7 +9,10 @@ const AdminLogin = async () => {
     const password = data.get("password");
 
     if (password === process.env.DD_ADMIN_PASSWORD) {
-      cookies().set("bvj-secure", "1", {
+      const id = crypto.randomBytes(10).toString("hex");
+      await kv.set(id, 1, { ex: 24 * 3600 });
+
+      cookies().set("bvj-secure", id, {
         httpOnly: true,
         secure: true,
       });

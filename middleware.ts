@@ -14,7 +14,8 @@ const middleware = async (request: NextRequest) => {
   const pathname = new URL(request.url).pathname;
   const redirect = redirectFactory(request);
 
-  if (pathname.includes("admin") && request.cookies.get("bvj-secure")?.value !== "1") {
+  const adminValue = request.cookies.get("bvj-secure")?.value;
+  if (pathname.includes("admin") && (!adminValue || !(await kv.exists(adminValue)))) {
     return redirect("/admin/login");
   }
 
