@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import { submitTask } from "@/app/actions";
 import { db, tasks } from "@/db";
 import { sql } from "drizzle-orm";
 import { kv } from "@vercel/kv";
@@ -22,7 +21,7 @@ const Home = async () => {
   return (
     <div className="flex h-screen flex-col items-center justify-center gap-8 bg-gray-200 p-8">
       <img className="flex-1 object-contain" src={item.image} alt="" />
-      <form className="grid w-full grid-cols-2 gap-8" action={submitTask}>
+      <form className="grid w-full grid-cols-2 gap-8" action="/result">
         <input type="hidden" name="id" value={id} />
         <input className="cursor-pointer rounded bg-blue-500 p-1" type="submit" name="child" value="Botond" />
         <input className="cursor-pointer rounded bg-blue-500 p-1" type="submit" name="child" value="Jakab" />

@@ -26,7 +26,8 @@
     "react-dropzone": "^14.2.3",
     "tailwindcss": "3.3.2",
     "typescript": "5.0.4",
-    "uploadthing": "^4.0.0"
+    "uploadthing": "^4.0.0",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "drizzle-kit": "^0.18.1",
