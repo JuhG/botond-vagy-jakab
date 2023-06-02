@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "1fc3f9ab-95bf-435f-9fec-06a918ca7322",
+  "id": "75bf2fe1-39cc-4dfd-a269-b524818f531e",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "tasks": {
@@ -26,6 +26,20 @@
           "primaryKey": false,
           "notNull": true
         },
+        "botond": {
+          "name": "botond",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "jakab": {
+          "name": "jakab",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
         "created_at": {
           "name": "created_at",
           "type": "timestamp",
@@ -43,8 +57,8 @@
     "child": {
       "name": "child",
       "values": {
-        "botond": "botond",
-        "jakab": "jakab"
+        "Botond": "Botond",
+        "Jakab": "Jakab"
       }
     }
   },

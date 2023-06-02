@@ -31,11 +31,11 @@ const Admin = () => {
         <div className="flex gap-2">
           <label className="flex gap-1">
             <span>Botond</span>
-            <input required type="radio" name="child" value="botond" />
+            <input required type="radio" name="child" value="Botond" />
           </label>
           <label className="flex gap-1">
             <span>Jakab</span>
-            <input required type="radio" name="child" value="jakab" />
+            <input required type="radio" name="child" value="Jakab" />
           </label>
         </div>
         <button>GO</button>

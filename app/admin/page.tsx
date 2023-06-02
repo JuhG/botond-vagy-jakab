@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { deleteTask } from "@/app/admin/action";
+import { deleteTask } from "@/app/admin/actions";
 import { db, tasks } from "@/db";
 import Link from "next/link";
 
