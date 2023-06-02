@@ -11,6 +11,7 @@ const Home = async () => {
     if (password === process.env.DD_PASSWORD) {
       const id = crypto.randomBytes(10).toString("hex");
       await kv.rpush(id, 0);
+      await kv.rpush("users", id);
 
       cookies().set("bvj", id, {
         httpOnly: true,
