@@ -5,7 +5,7 @@ import "@uploadthing/react/styles.css";
 import { UploadDropzone } from "@uploadthing/react";
 import { OurFileRouter } from "@/app/api/uploadthing/core";
 import { useState } from "react";
-import { saveTask } from "@/app/admin/upload/actions";
+import { saveTask } from "@/app/admin/actions";
 
 const Admin = () => {
   const [file, setFile] = useState("");
