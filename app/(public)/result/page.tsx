@@ -50,8 +50,8 @@ const Result = async ({ searchParams }: { searchParams: { [key: string]: string 
           Jakab: {item.jakab}
         </div>
       </div>
-      <div className="min-h-0 flex-1">
-        <Image className="h-full w-full object-contain" height="800" width="800" src={item.image} alt="" />
+      <div className="relative min-h-0 w-full flex-1">
+        <Image className="object-contain" fill src={item.image} alt="" />
       </div>
       <div className="w-full space-y-4 pb-16 text-center">
         {success && <p className="rounded bg-green-200 p-1 text-green-700">Talált!</p>}

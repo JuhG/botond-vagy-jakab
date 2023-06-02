@@ -20,8 +20,8 @@ const Home = async () => {
 
   return (
     <div className="flex h-screen flex-col items-center justify-center gap-8 bg-gray-200 p-8">
-      <div className="min-h-0 flex-1">
-        <Image className="h-full w-full object-contain" height="800" width="800" src={item.image} alt="" />
+      <div className="relative min-h-0 w-full flex-1">
+        <Image className="object-contain" fill src={item.image} alt="" />
       </div>
       <form className="grid w-full grid-cols-2 gap-8" action="/result">
         <input type="hidden" name="id" value={id} />
