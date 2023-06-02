@@ -43,6 +43,7 @@ const Home = async () => {
 
   return (
     <div className="flex h-screen flex-col items-center justify-center gap-8 bg-gray-200 p-8">
+      <div className="absolute right-1 top-1 text-gray-800">{list.length} / 22</div>
       <div className="relative min-h-0 w-full flex-1">
         <Image className="object-contain" fill src={item.image} alt="" />
       </div>

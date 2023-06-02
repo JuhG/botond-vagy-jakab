@@ -13,7 +13,7 @@ const resultSchema = z.object({
 
 const Result = async ({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) => {
   const { id, child } = resultSchema.parse(searchParams);
-  const taskId: number | null = await kv.get(id);
+  const taskId: number | null = await kv.getdel(id);
 
   if (!taskId) {
     throw new Error("Invalid");
