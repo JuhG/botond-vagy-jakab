@@ -1,34 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Botond vagy Jakab
 
-## Getting Started
+Production app locked down because of sensitive images.
+But the code is open source.
 
-First, run the development server:
+## Technical details
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Trying out a couple of technologies:
+- Next app router
+- React server components
+- Drizzle
+- Vercel's db and redis solutions
+- uploadthing
+- zod
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## First impressions
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+As a time capsule I'll put my thoughts here.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Services
 
-## Learn More
+I still think that making everything serverless makes no sense.
+That forces us to use all these services for upload and database, because there's no running server.
+Which kind of locks us inside these services forever, that could be potentially expensive and / or limiting in the long run.
+But it makes a ton of sense for these tiny side projects.
+This site won't get any traffic outside of this week probably.
+So paying for a server forever is insane.
+What we did in the old days is - for this reason - we put multiple of these small projects on a single VPS.
+The current serverless approach is definitely simpler with better DX.
+But if I would start my own startup I think I would put that on a real server.
 
-To learn more about Next.js, take a look at the following resources:
+### Server first
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+RSC is good.
+I mean really good.
+Best parts of the old Wordpress days with the best parts of modern frontend.
+Having a single mental model for the whole app is awesome.
+For these simple apps it completely eliminates API calls.
+And you can't say it won't scale - you can just write your app you did before.
+This is an additive change, nothing was removed.
+Really, REALLY enjoyed writing database / redis code close to the React code.
+Didn't feel strange at all.
+Wouldn't do this in a real app, but love having the option.
